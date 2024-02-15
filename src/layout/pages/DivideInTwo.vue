@@ -6,7 +6,7 @@ const slots = useSlots();
 </script>
 
 <template>
-  <div class="flex flex-col min-h-[calc(100vh-73px)] p-6 bg-gray-100">
+  <div class="flex flex-col min-h-[calc(100vh-48px)] p-6 bg-gray-100">
     <h3
       class="mb-5 text-xl font-bold"
       v-if="slots.header"
@@ -14,7 +14,7 @@ const slots = useSlots();
       <slot name="header"></slot>
     </h3>
 
-    <div class="flex-1 flex mb-3  bg-white border border-gray-300 transition">
+    <div class="flex-1 flex mb-3 bg-white border border-gray-300">
       <div class="basis-1/2 border-r p-5">
         <h4 class="font-bold mb-2">
           <slot name="left-title"></slot>

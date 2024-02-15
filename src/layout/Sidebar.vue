@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import MaterialIcon from '@/components/MaterialIcon/MaterialIcon.vue';
 import { settings, description, widgets, expand_more } from '@/assets/svg/iconPath';
 import { ref } from 'vue';
+import { FLEX } from '@/constants/style/customClass';
 
 const menuList = [
   {
@@ -60,17 +61,15 @@ const toggleMenu = (id: number) => {
 
 <template>
   <div class="sidebar-container">
-    <!-- <div class="flex relative flex-col flex-1 pt-0 min-h-0 bg-primary-50"> -->
-    <!-- <div class="flex overflow-y-auto flex-col flex-1 pt-8 pb-4"> -->
-    <div class="flex-1 px-6 bg-primary-50">
-      <ul class="gnb-menu pb-2 pt-1">
+    <div class="pt-5 px-6 bg-primary-50 min-h-[calc(100vh-48px)]">
+      <ul class="gnb-menu pb-2">
         <li :key="item.id" :class="['mb-3', item.id === activeMenuId ? 'on' : '']" v-for="item in menuList">
           <a
             href="#"
-            class="flex justify-between items-center my-2 text-base font-semibold"
+            :class="`${FLEX.centerBetween} my-2 text-base font-semibold`"
             @click.prevent="toggleMenu(item.id)"
           >
-            <div class="flex justify-start items-center gap-3">
+            <div :class="`${FLEX.centerStart} gap-3`">
               <MaterialIcon size="22" :path="item.icon" />
               {{ item.menu }}
             </div>
@@ -78,10 +77,10 @@ const toggleMenu = (id: number) => {
             <MaterialIcon size="22" class="folder-arrow" :path="expand_more" />
           </a>
 
-          <ul class="test" :style="{ height: activeMenuId === item.id ? `${item.children.length * 30}px` : '0px' }">
+          <ul class="menuList" :style="{ height: activeMenuId === item.id ? `${item.children.length * 30}px` : '0px' }">
             <li
               :key="subItem.menu"
-              class="pl-9 py-1 hover:bg-primary-100 text-sm"
+              class="pl-9 py-1 hover:font-semibold text-sm"
               v-for="subItem in item.children"
             >
               <a href="#" @click.prevent="clickMenu(`${item.path}/${subItem.path}`)">{{ subItem.menu }}</a>
@@ -90,8 +89,6 @@ const toggleMenu = (id: number) => {
         </li>
       </ul>
     </div>
-    <!-- </div> -->
-    <!-- </div> -->
   </div>
 </template>
 
@@ -99,12 +96,13 @@ const toggleMenu = (id: number) => {
 .folder-arrow {
   transition: transform 0.2s;
 }
+
 .on .folder-arrow {
   transform: rotate(180deg);
 }
 
-.gnb-menu .test {
-  transition: all 0.3s;
+.gnb-menu .menuList {
+  transition: all 0.2s;
   overflow: hidden;
 }
 </style>

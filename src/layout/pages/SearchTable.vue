@@ -6,7 +6,7 @@ const slots = useSlots();
 </script>
 
 <template>
-  <div class="flex flex-col min-h-[calc(100vh-73px)] p-6 bg-gray-100">
+  <div class="flex flex-col min-h-[calc(100vh-48px)] p-6 bg-gray-100">
     <h3
       class="mb-5 text-xl font-bold"
       v-if="slots.header"
